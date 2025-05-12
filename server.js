@@ -3,6 +3,7 @@ require('dotenv').config();
 const Fastify = require('fastify');
 const sequelize = require('./db');
 const priceListRoutes = require('./routes/pricelist.routes');
+const termsRoutes = require('./routes/terms.routes'); 
 
 const fastify = Fastify({ logger: true });
 
@@ -10,6 +11,7 @@ async function startServer() {
   try {
     
     fastify.register(priceListRoutes);
+    fastify.register(termsRoutes);
 
     await sequelize.authenticate();
     console.log('Database connected ✅');
