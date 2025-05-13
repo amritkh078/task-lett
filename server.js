@@ -1,3 +1,4 @@
+const seedTerms = require('./scripts/seedTerms');
 require('dotenv').config();
 
 const Fastify = require('fastify');
@@ -14,10 +15,12 @@ async function startServer() {
     fastify.register(termsRoutes);
 
     await sequelize.authenticate();
-    console.log('Database connected ✅');
+    console.log('Database connected');
 
     await sequelize.sync(); 
-    console.log('Models synced ✅');
+    console.log('Models synced');
+
+     await seedTerms();
 
     await fastify.listen({ port: process.env.PORT || 3000 });
     console.log(`Server running at http://localhost:${process.env.PORT || 3000}`);
