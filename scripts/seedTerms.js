@@ -63,8 +63,7 @@ Ha en trevlig dag!`
         }
     ]);
 
-    console.log('Terms seeded ✅');
-    process.exit();
+    console.log('Terms seeded');
 }
 
-seedTerms();
+module.exports = seedTerms;
