@@ -7,6 +7,12 @@ const priceListRoutes = require('./routes/pricelist.routes');
 const termsRoutes = require('./routes/terms.routes');
 
 const fastify = Fastify({ logger: true });
+const cors = require('@fastify/cors');
+
+fastify.register(cors, {
+  origin: ['*'], 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+});
 
 async function startServer() {
   try {
